@@ -84,45 +84,4 @@ struct Cell {
     }
 };
 
-// 1. 遊玩模式類型
-enum class GameModeType {
-    Marathon,   // 經典無盡（隨消行升級加速）
-    Sprint,     // 40 行競速（消除 40 行獲勝，計時）
-    Ultra,      // 限時高分（限時 120 秒）
-    ItemBattle  // 道具對戰（支援道具與垃圾行）
-};
-
-// 2. 道具類型（對應 Cell 內的 itemId 或道具欄）
-enum class ItemType : int {
-    None = 0,
-    ClearBottom2, // 立即消除自己最底層 2 行
-    SlowGravity,  // 自身下落速度暫時減半（持續 10 秒）
-    SendGarbage,  // 立即送給對手 2 行垃圾行
-    FogMask       // 遮蔽對手棋盤下半部視野（持續 6 秒）
-};
-
-// 3. 遊戲場景狀態
-enum class SceneType {
-    MainMenu,   // 主選單
-    ModeSelect, // 模式選擇
-    Lobby,      // 連線大廳（輸入 IP / 開房等待）
-    Playing,    // 遊玩中
-    Paused,     // 暫停
-    GameOver    // 結算畫面
-};
-
-// 4. 聯機角色與封包類型
-enum class NetRole {
-    None,
-    Host,   // 開房主機（監聽 Port）
-    Client  // 加入端（輸入主機 IP 連線）
-};
-
-// 單局統計數據（供 GameMode 判定勝負與 Renderer 顯示 HUD）
-struct MatchStats {
-    int score = 0;
-    int linesCleared = 0;
-    int level = 1;
-    float elapsedTime = 0.0f; // 經過秒數
-};
 } // namespace Tetris
